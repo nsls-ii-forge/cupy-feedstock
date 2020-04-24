@@ -1,0 +1,32 @@
+channel_sources:
+  - nsls2forge,defaults
+channel_targets:
+  - nsls2forge main
+cuda_compiler:                 # [linux64]
+  - nvcc                       # [linux64]
+cuda_compiler_version:         # [linux64]
+  - None                       # [linux64]
+  - 9.2                        # [linux64]
+  - 10.0                       # [linux64]
+  - 10.1                       # [linux64]
+  - 10.2                       # [linux64]
+docker_image:                                   # [linux]
+  - condaforge/linux-anvil-comp7                # [linux64]
+  - condaforge/linux-anvil-cuda:9.2             # [linux64]
+  - condaforge/linux-anvil-cuda:10.0            # [linux64]
+  - condaforge/linux-anvil-cuda:10.1            # [linux64]
+  - condaforge/linux-anvil-cuda:10.2            # [linux64]
+zip_keys:
+  -                             # [linux64]
+    - cuda_compiler_version     # [linux64]
+    - docker_image              # [linux64]
+# TODO: remove these when run_exports are added to the packages.
+pin_run_as_build:
+  cudnn:
+    max_pin: x
+    min_pin: x.x
+# Pinning packages
+cudnn:
+  - 7.6.5
+nccl:
+  - 2.4.6.1
