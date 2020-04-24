@@ -8,8 +8,8 @@ channels:
     - [nsls2forge, main]
 compiler_stack: comp7
 azure:
-  user_or_org: leofang
-  project_name: nsls2ptycho
+  user_or_org: nsls2forge
+  project_name: nsls2forge
 provider:
   linux: azure
   osx: azure
