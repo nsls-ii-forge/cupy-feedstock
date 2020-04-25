@@ -5,7 +5,9 @@
 jobs:
 - job: linux
   pool:
-    vmImage: ubuntu-16.04
+    name: BNL-machines
+    demands:
+    - gpu -equals true
   timeoutInMinutes: 360
   strategy:
     maxParallel: 8
