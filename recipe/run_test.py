@@ -10,7 +10,8 @@ pkgutil.find_loader("cupy")
 import sys
 try:
     import cupy
-except ImportError:
+except ImportError as e:
+    print('Got ImportError: \n%s' % str(e))
     print("No GPU available. Exiting without running CuPy's tests.")
     sys.exit(0)
 
