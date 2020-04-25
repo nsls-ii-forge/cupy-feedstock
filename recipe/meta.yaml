@@ -13,18 +13,22 @@ source:
       # Include full CUDA 10.2 support: https://github.com/cupy/cupy/pull/3218
       - fixes_3218.diff
 
-  # CUB support has too many bugs, let us wait for a bit longer
-  ## 1. The CUB support has been extensively tested with v1.8.0, so we should pin it here
-  ## 2. This dependency should be removed once CuPy bundles CUB (cupy/cupy#2584)
-  #- url: https://github.com/NVlabs/cub/archive/v1.8.0.tar.gz
-  #  sha256: 025658f4c933cd2aa8cc88a559d013338d68de3fa639cc1f2b12cf61dc759667
-  #  folder: cub_v1.8.0  # so the source code is in cupy/cub_v1.8.0
+  # 1. The CUB support has been extensively tested with v1.8.0, so we should pin it here
+  # 2. This dependency should be removed once CuPy bundles CUB (cupy/cupy#2584)
+  - url: https://github.com/NVlabs/cub/archive/v1.8.0.tar.gz
+    sha256: 025658f4c933cd2aa8cc88a559d013338d68de3fa639cc1f2b12cf61dc759667
+    folder: cub_v1.8.0  # so the source code is in cupy/cub_v1.8.0
 
 build:
   number: 0
   # temporarily disable PyPy build (conda-forge/cupy-feedstock#43)
   skip: True  # [python_impl == "pypy"]
-  skip: True  # [cuda_compiler_version in (undefined, "None")]
+
+  # Temporarily limit the build matrix for testing local runner
+  skip: True  # [py != 37]
+  skip: True  # [cuda_compiler_version != '10.0']
+  #skip: True  # [cuda_compiler_version in (undefined, "None")]
+
   script:
     # CUDA 10.1 moves some headers to `/usr/include`
     # So add that location last in the header search paths
