@@ -23,11 +23,10 @@ build:
   number: 0
   # temporarily disable PyPy build (conda-forge/cupy-feedstock#43)
   skip: True  # [python_impl == "pypy"]
+  skip: True  # [cuda_compiler_version in (undefined, "None")]
 
-  # Temporarily limit the build matrix for testing local runner
+  # temporarily limit the build matrix for testing local runner
   skip: True  # [py != 37]
-  skip: True  # [cuda_compiler_version != '10.0']
-  #skip: True  # [cuda_compiler_version in (undefined, "None")]
 
   script:
     # CUDA 10.1 moves some headers to `/usr/include`
