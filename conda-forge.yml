@@ -15,3 +15,5 @@ provider:
   osx: azure
   win: azure
 upload_on_branch: master
+docker:
+  executable: nvidia-docker
