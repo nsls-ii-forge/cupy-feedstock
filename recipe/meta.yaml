@@ -71,6 +71,7 @@ test:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
     - {{ compiler("cuda") }}  # tests need nvcc
+    - scipy
 
   source_files:
     - tests

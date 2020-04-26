@@ -19,4 +19,3 @@ except ImportError as e:
 import py
 py.test.cmdline.main(["tests/cupy_tests"])
 py.test.cmdline.main(["tests/cupyx_tests"])
-py.test.cmdline.main(["tests/example_tests"])
