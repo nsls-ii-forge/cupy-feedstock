@@ -8,6 +8,8 @@ jobs:
     name: BNL-machines
     demands:
     - gpu -equals true
+  workspace:
+    clean: all
   timeoutInMinutes: 360
   strategy:
     maxParallel: 8
