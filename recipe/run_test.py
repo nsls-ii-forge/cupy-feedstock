@@ -17,4 +17,4 @@ except ImportError as e:
 
 # Run CuPy's test suite
 import py
-py.test.cmdline.main(["tests/cupy_tests"])
+py.test.cmdline.main(["tests"])
