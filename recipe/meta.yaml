@@ -68,6 +68,8 @@ test:
   requires:
     - pytest
     - mock
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
     - {{ compiler("cuda") }}  # tests need nvcc
 
   source_files:
