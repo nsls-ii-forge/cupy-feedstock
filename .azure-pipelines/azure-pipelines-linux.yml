@@ -5,6 +5,7 @@
 jobs:
 - job: linux
   pool:
+  # self-hosted agent
     name: BNL-machines
     demands:
     - gpu -equals true
@@ -12,7 +13,7 @@ jobs:
     clean: all
   timeoutInMinutes: 360
   strategy:
-    maxParallel: 8
+    maxParallel: 1
     matrix:
       linux_cuda_compiler_version10.0:
         CONFIG: linux_cuda_compiler_version10.0

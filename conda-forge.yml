@@ -10,6 +10,14 @@ compiler_stack: comp7
 azure:
   user_or_org: nsls2forge
   project_name: nsls2forge
+  pool:
+    name: BNL-machines
+    demands:
+      - gpu -equals true
+  workspace:
+    clean: all
+  strategy:
+    maxParallel: 1
 provider:
   linux: azure
   osx: azure
@@ -17,3 +25,4 @@ provider:
 upload_on_branch: master
 docker:
   executable: nvidia-docker
+  run_args: -t --rm
