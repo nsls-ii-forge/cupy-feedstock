@@ -15,6 +15,9 @@ except ImportError as e:
     print("No GPU available. Exiting without running CuPy's tests.")
     sys.exit(0)
 
+# Print CuPy runtime info
+cupy.show_config()
+
 # Run CuPy's test suite
 import py
 py.test.cmdline.main(["tests/cupy_tests"])
