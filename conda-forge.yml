@@ -10,7 +10,7 @@ compiler_stack: comp7
 azure:
   user_or_org: nsls2forge
   project_name: nsls2forge
-  pool:
+  pool_linux:
     name: BNL-machines
     demands:
       - gpu -equals true
