@@ -10,10 +10,6 @@ jobs:
     name: BNL-machines
   strategy:
     matrix:
-      linux_cuda_compiler_version10.0:
-        CONFIG: linux_cuda_compiler_version10.0
-        UPLOAD_PACKAGES: true
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.0
       linux_cuda_compiler_version10.1:
         CONFIG: linux_cuda_compiler_version10.1
         UPLOAD_PACKAGES: true
