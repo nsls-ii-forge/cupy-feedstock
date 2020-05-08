@@ -19,6 +19,8 @@ azure:
       clean: all
     strategy:
       maxParallel: 1
+    variables:
+      cutensor_path: /home/ci_agent/libcutensor_1.0.1/
 provider:
   linux: azure
   osx: azure
@@ -26,4 +28,4 @@ provider:
 upload_on_branch: master
 docker:
   executable: nvidia-docker
-  run_args: -t --rm
+  run_args: -t --rm -v $(cutensor_path):/home/conda/libcutensor:ro,z

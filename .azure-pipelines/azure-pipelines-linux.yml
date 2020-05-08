@@ -28,6 +28,8 @@ jobs:
         DOCKER_IMAGE: condaforge/linux-anvil-cuda:9.2
     maxParallel: 1
   timeoutInMinutes: 360
+  variables:
+    cutensor_path: /home/ci_agent/libcutensor_1.0.1/
   workspace:
     clean: all
 
@@ -44,7 +46,7 @@ jobs:
         export CI=azure
         export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
         export UPLOAD_ON_BRANCH="master"
-        export CONDA_FORGE_DOCKER_RUN_ARGS="-t --rm"
+        export CONDA_FORGE_DOCKER_RUN_ARGS="-t --rm -v $(cutensor_path):/home/conda/libcutensor:ro,z"
         .scripts/run_docker_build.sh
     displayName: Run docker build
     env:
