@@ -10,22 +10,24 @@ jobs:
     name: BNL-machines
   strategy:
     matrix:
+      linux_cuda_compiler_version10.0:
+        CONFIG: linux_cuda_compiler_version10.0
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.0
       linux_cuda_compiler_version10.1:
         CONFIG: linux_cuda_compiler_version10.1
-        UPLOAD_PACKAGES: true
+        UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.1
       linux_cuda_compiler_version10.2:
         CONFIG: linux_cuda_compiler_version10.2
-        UPLOAD_PACKAGES: true
+        UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.2
       linux_cuda_compiler_version9.2:
         CONFIG: linux_cuda_compiler_version9.2
-        UPLOAD_PACKAGES: true
+        UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-cuda:9.2
     maxParallel: 1
   timeoutInMinutes: 360
-  variables:
-    cutensor_path: /home/ci_agent/libcutensor_1.0.1/
   workspace:
     clean: all
 
@@ -42,7 +44,7 @@ jobs:
         export CI=azure
         export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
         export UPLOAD_ON_BRANCH="master"
-        export CONDA_FORGE_DOCKER_RUN_ARGS="-t --rm -v $(cutensor_path):/home/conda/libcutensor:ro,z"
+        export CONDA_FORGE_DOCKER_RUN_ARGS="-t --rm"
         .scripts/run_docker_build.sh
     displayName: Run docker build
     env:

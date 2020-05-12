@@ -17,7 +17,7 @@ pkgutil.find_loader("cupy")
 # Try to import CuPy
 import sys
 try:
-    from cupy.cuda import cutensor
+    #from cupy.cuda import cutensor
     import cupy
 except ImportError as e:
     print('Got ImportError: \n%s' % str(e))
