@@ -8,10 +8,24 @@ channels:
     - [nsls2forge, main]
 compiler_stack: comp7
 azure:
-  user_or_org: leofang
-  project_name: nsls2ptycho
+  user_or_org: nsls2forge
+  project_name: nsls2forge
+  settings_linux:
+    pool: #BNL-machines
+      name: BNL-machines
+      demands:
+        - gpu -equals true
+    workspace:
+      clean: all
+    strategy:
+      maxParallel: 1
+    # variables:
+    #   cutensor_path: /home/ci_agent/libcutensor_1.0.1/
 provider:
   linux: azure
   osx: azure
   win: azure
 upload_on_branch: master
+docker:
+  executable: nvidia-docker
+  run_args: -t --rm  # -v $(cutensor_path):/home/conda/libcutensor:ro,z
