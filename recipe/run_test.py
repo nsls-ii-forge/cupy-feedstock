@@ -24,6 +24,10 @@ except ImportError as e:
     print("No GPU available. Exiting without running CuPy's tests.")
     sys.exit(0)
 
+# Check driver version (in the format XXX.XX)
+import subprocess
+subprocess.run(['nvidia-smi'])
+
 # Print CuPy runtime info
 cupy.show_config()
 
