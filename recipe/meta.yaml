@@ -1,20 +1,14 @@
 {% set name = "cupy" %}
-{% set version = "8.0.0b2" %}
-{% set sha256 = "6e06ccd1795b1c6f7fd82ff6f5db8306c69ca39393976ca49e9bc687646f9dd0" %}
+{% set version = "8.0.0rc1" %}
+{% set sha256 = "2981c809f7a7e1964c83921bcc065ae573e019f48f64468dc345bb3cd451e84e" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  - url: https://github.com/cupy/cupy/archive/v{{ version }}.tar.gz
+  - url: https://pypi.io/packages/source/c/cupy/cupy-{{ version }}.tar.gz
     sha256: {{ sha256 }}
-
-  # 1. The CUB support has been extensively tested with v1.8.0, so we should pin it here
-  # 2. This dependency should be removed once CuPy bundles CUB (cupy/cupy#2584)
-  - url: https://github.com/NVlabs/cub/archive/1.8.0.tar.gz
-    sha256: 025658f4c933cd2aa8cc88a559d013338d68de3fa639cc1f2b12cf61dc759667
-    folder: cub_v1.8.0  # so the source code is in cupy/cub_v1.8.0
 
 build:
   number: 0
@@ -23,9 +17,6 @@ build:
   skip: true  # [cuda_compiler_version in (undefined, "None")]
 
   script:
-    # The issue of some CUDA headers being moved out of /usr/local/cuda/ since 10.1+
-    # is addressed in conda-forge/docker-images#134, so we do nothing in the recipe
-    - export CUB_PATH=${PWD}/cub_v1.8.0  # TODO(leofang): remove this
     #- export CUTENSOR_PATH=${HOME}/libcutensor  # [cuda_compiler_version in ('10.1', '10.2')]
     - {{ PYTHON }} -m pip install . -vv
 
@@ -59,7 +50,7 @@ requirements:
     - python
     - setuptools
     - fastrlock >=0.3
-    - numpy >=1.9.0
+    - numpy >=1.15
     - six >=1.9.0
     # - cudnn  <-- added via run_export
     # - nccl   <-- added via run_export

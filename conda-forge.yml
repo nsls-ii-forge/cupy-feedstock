@@ -10,8 +10,22 @@ channel_priority: flexible
 azure:
   user_or_org: nsls2forge
   project_name: nsls2forge
+  settings_linux:
+     pool:
+       name: BNL-machines
+       demands:
+         - gpu -equals true
+     workspace:
+       clean: all
+     strategy:
+       maxParallel: 2
+     # variables:
+     #   cutensor_path: /home/ci_agent/libcutensor_1.0.1/
 provider:
   linux: azure
   osx: azure
   win: azure
 upload_on_branch: master
+docker:
+   executable: docker
+   run_args: -t --rm --gpus all # -v $(cutensor_path):/home/conda/libcutensor:ro,z

@@ -1,7 +1,11 @@
 channel_sources:
-  - nsls2forge,defaults
+  - nsls2forge,conda-forge,defaults
 channel_targets:
   - nsls2forge main
+c_compiler_version:
+  - 7                          # [linux64]
+cxx_compiler_version:          # [unix]
+  - 7                          # [linux64]
 cuda_compiler:                 # [linux64]
   - nvcc                       # [linux64]
 cuda_compiler_version:         # [linux64]
@@ -24,6 +28,8 @@ python:
   - 3.6
   - 3.7
   - 3.8
+python_impl:
+  - cpython
 # TODO: remove these when run_exports are added to the packages.
 pin_run_as_build:
   cudnn:
