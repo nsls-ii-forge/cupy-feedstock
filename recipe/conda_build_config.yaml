@@ -1,5 +1,5 @@
 channel_sources:
-  - nsls2forge,conda-forge,defaults
+  - nsls2forge,defaults,conda-forge
 channel_targets:
   - nsls2forge main
 c_compiler_version:

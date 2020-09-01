@@ -5,9 +5,7 @@
 jobs:
 - job: linux
   pool:
-    demands:
-    - gpu -equals true
-    name: BNL-machines
+    vmImage: ubuntu-16.04
   strategy:
     matrix:
       linux_64_cuda_compiler_version10.0python3.6:
@@ -58,10 +56,8 @@ jobs:
         CONFIG: linux_64_cuda_compiler_version9.2python3.8
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-cuda:9.2
-    maxParallel: 2
+    maxParallel: 8
   timeoutInMinutes: 360
-  workspace:
-    clean: all
 
   steps:
   - script: |
@@ -82,7 +78,6 @@ jobs:
         export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
         export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
         export UPLOAD_ON_BRANCH="master"
-        export CONDA_FORGE_DOCKER_RUN_ARGS="-t --rm --gpus all"
         .scripts/run_docker_build.sh
     displayName: Run docker build
     env:
