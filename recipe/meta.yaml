@@ -7,7 +7,7 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://pypi.io/packages/source/c/cupy/cupy-{{ version }}.tar.gz
+  - url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
     sha256: {{ sha256 }}
 
 build:
@@ -18,7 +18,7 @@ build:
 
   script:
     #- export CUTENSOR_PATH=${HOME}/libcutensor  # [cuda_compiler_version in ('10.1', '10.2')]
-    - {{ PYTHON }} -m pip install . -vv
+    - {{ PYTHON }} -m pip install . --no-deps -vv
 
     # copy activate/deactivate scripts
     - mkdir -p "${PREFIX}/etc/conda/activate.d"
