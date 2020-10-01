@@ -3,13 +3,13 @@ c_compiler:
 c_compiler_version:
 - '7'
 channel_sources:
-- nsls2forge,defaults
+- nsls2forge,defaults,conda-forge
 channel_targets:
 - nsls2forge main
 cuda_compiler:
 - nvcc
 cuda_compiler_version:
-- '10.0'
+- '9.2'
 cudnn:
 - 7.6.5
 cxx_compiler:
@@ -17,7 +17,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '7'
 docker_image:
-- condaforge/linux-anvil-cuda:10.0
+- condaforge/linux-anvil-cuda:9.2
 nccl:
 - 2.4.6.1
 pin_run_as_build:
@@ -31,6 +31,8 @@ python:
 - '3.7'
 python_impl:
 - cpython
+target_platform:
+- linux-64
 zip_keys:
 - - cuda_compiler_version
   - docker_image

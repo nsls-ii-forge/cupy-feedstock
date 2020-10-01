@@ -3,7 +3,7 @@ c_compiler:
 c_compiler_version:
 - '7'
 channel_sources:
-- nsls2forge,defaults
+- nsls2forge,defaults,conda-forge
 channel_targets:
 - nsls2forge main
 cuda_compiler:
@@ -28,9 +28,11 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- '3.7'
+- '3.6'
 python_impl:
 - cpython
+target_platform:
+- linux-64
 zip_keys:
 - - cuda_compiler_version
   - docker_image
